@@ -28,12 +28,12 @@ This is a Team Porfile Generator that will make keeping track of teammates much 
 
 ## Preview
 
-![splash-page]()
+![splash-page](./images/_C__Users_Akbari-AMD-8350_Desktop_Boot_Team-Profile-Generator_dist_index.html.png)
 
 ---
 
 ## Usage
 
-Please follow this link for a demonstration video on how to use this app.
+Please follow this link for a demonstration video on how to use this app. https://drive.google.com/file/d/1q2RTsO4Uvo4KjKGdUxY_hUrigADVZKzE/view
 
 ---
