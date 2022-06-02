@@ -1,14 +1,16 @@
-const fs = require('fs');
+const {writeFile, copyFile} = require('./utils/generate_team');
 const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const generatePage = require('./src/template');
 
 class Prompt {
     constructor(teamData) {
         this.employees = [];
     }
+
     promptUser() {
         inquirer
             .prompt([
@@ -37,7 +39,7 @@ class Prompt {
             
                 },
             ])
-            .then(({ name, id, email, officeNumber}) => {
+            .then(({name, id, email, officeNumber}) => {
                 this.employees.push(new Manager(name, id, email, officeNumber));
                 this.getEngineer()
             })
@@ -127,6 +129,22 @@ class Prompt {
         ])
         .then(({ name, id, email, school}) => {
             this.employees.push(new Intern(name, id, email, school));
+        })
+        .then((teamData) => {
+            return generatePage(this.employees)
+        })
+        .then(pageHTML => {
+            return writeFile(pageHTML)
+        })
+        .then(writeFileResponse => {
+            console.log(writeFileResponse)
+            return copyFile();
+        })
+        .then(copyFileReponse => {
+            console.log(copyFileReponse);
+        })
+        .catch(err => {
+            console.log(err)
         })
     }
 }
